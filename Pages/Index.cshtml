@@ -2,37 +2,120 @@
 @model ChatServer.Pages.IndexModel
 @{
 }
-<div class="container">
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-2">User</div>
-        <div class="col-4"><input type="text" id="userInput" /></div>
-    </div>
-    <div class="row">
-        <div class="col-2">Message</div>
-        <div class="col-4"><input type="text" id="messageInput" /></div>
-    </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-6">
-            <input type="button" id="sendButton" value="Send Message" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/lib/index.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div id="form-login-data" style="display: block">
+        <div class="container bootstrap snippets bootdey">
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    <li><a href="#">&nbsp;</a></li>
+                </ul>
+                <h3 class="text-muted prj-name">Chat</h3>
+            </div>
+
+            <div style="height:auto;min-height:300px;" class="jumbotron">
+                <div class="col-md-4">
+                    <img class="img-responsive center-block img-user" src="/images/2993579_waveing_emoji_emoticons_emoticon_emote.png">
+                </div>
+                <div class="col-md-6 form-content">
+                    <form accept-charset="utf-8" method="post" id="UserLoginForm" class="form-signin" action="">
+                        <h1 class="form-signin-heading text-muted">Login</h1>
+                        <input type="text" id="username" autofocus="autofocus" placeholder="Username" class="form-control" name="username">
+                        @*<input type="password" id="password" placeholder="Password" class="form-control" name="password">*@
+                        <button type="button" class="btn btn-lg btn-info btn-block" id="form-login-button">
+                            <i class="fa fa-share"></i>
+                            Login
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-12">
-        <hr />
+
+    <div id="form-chat-data" style="display: none">
+        <div class="container">
+
+            <!-- Page header start -->
+            <div class="page-title">
+                <div class="row gutters">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <h5 class="title">Chat App</h5>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12"> </div>
+                </div>
+            </div>
+            <!-- Page header end -->
+            <!-- Content wrapper start -->
+            <div class="content-wrapper">
+
+                <!-- Row start -->
+                <div class="row gutters">
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                        <div class="card m-0">
+
+                            <!-- Row start -->
+                            <div class="row no-gutters">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
+                                    <div class="users-container">
+                                        <div class="chat-search-box">
+                                            <div class="input-group">
+                                                <input class="form-control" placeholder="Search">
+                                                <div class="input-group-btn">
+                                                    <button type="button" class="btn btn-info">
+                                                        <i class="fa fa-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul id="form-contact" class="users">
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
+                                    <div class="selected-user">
+                                        <span><span id="form-me" class="name"></span></span>
+                                    </div>
+                                    <div class="chat-container">
+                                        <ul id="form-chat-box" class="chat-box chatContainerScroll">
+                                        </ul>
+                                        <div class="form-group mt-3 mb-0">
+                                            <textarea id="form-chat-text" class="form-control" rows="3"
+                                                      placeholder="Type your message here..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Row end -->
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- Row end -->
+
+            </div>
+            <!-- Content wrapper end -->
+
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-6">
-        <ul id="messagesList"></ul>
-    </div>
-    <div class="col-6">
-        <ul id="connections"></ul>
-    </div>
-</div>
-<script src="~/js/signalr/dist/browser/signalr.min.js"></script>
-<script src="~/js/jquery/dist/jquery.min.js"></script>
-<script src="~/js/microsoft/signalr-protocol-msgpack/dist/browser/signalr-protocol-msgpack.min.js"></script>
-<script src="~/js/chat.js"></script>
+
+    <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/microsoft/signalr-protocol-msgpack/dist/browser/signalr-protocol-msgpack.min.js"></script>
+    <script src="~/js/chat.js"></script>
+
+</body>
+</html>
