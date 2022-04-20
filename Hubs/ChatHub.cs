@@ -26,8 +26,13 @@ namespace ChatServer.Hubs
 
         public override async Task OnDisconnectedAsync(Exception exception)
         {
-            Users.Remove(Users.First(x => x.ConnectionId == Context.ConnectionId));
-            await UserContactListUpdate();
+            var usr = Users.First(x => x.ConnectionId == Context.ConnectionId);
+            Users.Remove(usr);
+
+            if (!string.IsNullOrEmpty(usr.Name))
+            {
+                await UserContactListUpdate();
+            }
             await base.OnDisconnectedAsync(exception);
         }
 
